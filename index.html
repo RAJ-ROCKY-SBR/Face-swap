@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SBR HERE - Face Swap</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>SBR HERE</h1>
+    <h2>Smart Face Swapper</h2>
+    <form method="post" enctype="multipart/form-data">
+      <label>Base Image (Target):</label>
+      <input type="file" name="base" required><br>
+      <label>Face Image (To Put):</label>
+      <input type="file" name="face" required><br>
+      <button type="submit">Swap Face</button>
+    </form>
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+    {% if result_image %}
+      <div class="result">
+        <h3>Output Image:</h3>
+        <img src="{{ url_for('static', filename='uploads/output.jpg') }}" alt="Result">
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
